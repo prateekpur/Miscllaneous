@@ -5,20 +5,13 @@ public class Prob3 {
   //775146
   public static void main(String args[])  {
     // 0th place of the array is not being used
+    Utils.loadPrimes("C:\\prateek\\work\\Miscllaneous\\src\\prime_numbers");
     System.out.println(System.currentTimeMillis());
-    boolean nums[] = new boolean[775147];
-    for (int i = 2; i < 775147; ++i)  {
-      if (!nums[i]) {
-        //System.out.println(i);
-        for (int j = i+1; j < 775147; ++j) {
-          if (!nums[j]) {
-            if (j % i == 0) {
-              nums[j] = true;
-            }
-          }
-        }
+    long num = 600851475143l;
+    for (int i : Utils.primes)  {
+      if (num%i == 0) {
+        System.out.println(i);
       }
     }
-    System.out.println(System.currentTimeMillis());
   }
 }
