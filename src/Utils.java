@@ -12,7 +12,8 @@ public class Utils {
   public static List<Integer> primes = new ArrayList<Integer>();
 
   public static void loadPrimes(String fileName) {
-    try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+    try{
+      BufferedReader br = new BufferedReader(new FileReader(fileName));
       String line = br.readLine();
       while (line != null) {
         primes.add(Integer.parseInt(line));
