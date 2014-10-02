@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -7,28 +8,39 @@ import java.util.Set;
  */
 public class Prob12 {
   public static void main(String args[])  {
-    File file = new File("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
-    try {
-      FileReader fw = new FileReader(file.getAbsoluteFile());
-      BufferedReader bw = new BufferedReader(fw);
-      Set<Integer> primes_Golden = new HashSet<Integer>(300000);
-      String str = bw.readLine();
-      while (str != null) {
-        String s[] = str.split(" ");
-        for (String s1 : s) {
-          if (!s1.isEmpty()) {
-            primes_Golden.add(Integer.parseInt(s1));
+    System.out.println(System.currentTimeMillis());
+    Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
+    int cnt = 2, curNumber = 1;
+    int t = getNumberOfFactors(20);
+    while(getNumberOfFactors(curNumber) < 500)  {
+      curNumber += cnt;
+      cnt++;
+    }
+    System.out.println(curNumber);
+    System.out.println(System.currentTimeMillis());
+  }
+
+  public static int getNumberOfFactors(int num)  {
+    int factors = 1;
+    Iterator<Integer> iter = Utils.primes.iterator();
+    while(iter.hasNext()) {
+      int prime = iter.next();
+      if (prime > num) {
+        break;
+      }
+      if (num % prime == 0) {
+        int pow = 0;
+        //find power of prime which can divide num
+        for (int i = 1; i < 100000; ++i)  {
+          if (num % Math.pow(prime, i) != 0)  {
+            pow = i-1;
+            break;
           }
         }
-        str = bw.readLine();
+        factors *= (pow+1);
       }
-      bw.close();
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
     }
-
+    return factors;
   }
 
 }
