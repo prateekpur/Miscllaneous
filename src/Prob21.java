@@ -1,40 +1,48 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+
+import static java.util.Collections.*;
 
 /**
- * Created by ppuri on 10/7/2014.
+ * Created by Prateek on 10/7/2014.
  */
 public class Prob21 {
   public static void main(String args[])  {
-    for (int i = 220; i < 10000; ++i) {
-      List<Integer> li = getFactors(i);
-      int sum = 0;
-      for (int j : li)  {
-        sum += j;
+    File file = new File("C:\\prateek\\work\\Miscllaneous\\src\\p022_names.txt");
+    BufferedReader bw;
+    List<String> li = new ArrayList<>();
+    try (FileReader fw = new FileReader(file.getAbsoluteFile())) {
+      bw = new BufferedReader(fw);
+      String str = bw.readLine();
+      while(str != null)  {
+        str = str.replace("\"", "");
+        String s[] = str.split(",");
+        for (String s1 : s) {
+          li.add(s1);
+        }
+        str = bw.readLine();
       }
-      if (sum == 1 || sum == i) {
-        continue;
-      }
-      li = getFactors(sum);
-      int newsum = 0;
-      for (int j : li)  {
-        newsum += j;
-      }
-      if (i == newsum)  {
-        System.out.println(" : "+sum + " : "+newsum);
-      }
+      bw.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    sort(li);
+    long sum = 0l;
+    for (int i = 0; i < li.size(); ++i) {
+      int tmp = (i+1)*getScore(li.get(i));
+      sum += (i+1)*getScore(li.get(i));
     }
   }
 
-  public static List<Integer> getFactors(int num)  {
-    List<Integer> li = new ArrayList<>();
-    li.add(1);
-    for (int i = 2; i <= Math.sqrt(num); ++i) {
-      if (num % i == 0) {
-        li.add(i);
-        li.add(num / i);
-      }
+  // upper case alphabets ascii start with 65 A=65 and Z=90
+  public static int getScore(String word) {
+    int score = 0;
+    for (char c : word.toCharArray()) {
+      score += c - 64;
     }
-    return li;
+    return score;
   }
+  //871198282
 }

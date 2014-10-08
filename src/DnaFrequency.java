@@ -22,7 +22,7 @@ public class DnaFrequency {
       }
     }
     int max = 0;
-    Set<String> maxSubs = new HashSet<>();
+    Set<String> maxSubs = new HashSet<String>();
     for (int i = 0; i < score.length-1; ++i)  {
       score[i] = map.get(subStrings[i]);
       if (score[i] > max) {
