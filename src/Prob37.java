@@ -39,33 +39,11 @@ public class Prob37 {
   }
 
   private static int removeLeftDigit(int num) {
-    return num%powers[getLength(num)-1];
+    return num%powers[Utils.getLength(num)-1];
   }
 
   private static int removeRightDigit(int num) {
     return num/10;
   }
 
-  // finds length upto 10 digits.
-  private static int getLength(int num) {
-    if (num > 100000000) {
-      return 9;
-    } else if (num > 10000000) {
-      return 8;
-    } else if (num > 1000000) {
-      return 7;
-    } else if (num > 100000) {
-      return 6;
-    } else if (num > 10000) {
-      return 5;
-    } else if (num > 1000) {
-      return 4;
-    } else if (num > 100) {
-      return 3;
-    } else if (num > 10) {
-      return 2;
-    } else  {
-      return 1;
-    }
-  }
 }

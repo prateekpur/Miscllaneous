@@ -59,4 +59,28 @@ public class Utils {
         //"C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers_1");
 
   }
+
+  // finds length upto 10 digits.
+  public static int getLength(int num) {
+    if (num > 100000000) {
+      return 9;
+    } else if (num > 10000000) {
+      return 8;
+    } else if (num > 1000000) {
+      return 7;
+    } else if (num > 100000) {
+      return 6;
+    } else if (num > 10000) {
+      return 5;
+    } else if (num > 1000) {
+      return 4;
+    } else if (num > 100) {
+      return 3;
+    } else if (num > 10) {
+      return 2;
+    } else  {
+      return 1;
+    }
+  }
+
 }
