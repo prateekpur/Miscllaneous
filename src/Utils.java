@@ -1,15 +1,16 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 /**
  * Created by Prateek on 9/22/2014.
  */
 public class Utils {
-  public static List<Integer> primes = new ArrayList<Integer>();
+  public static Set<Integer> primes = new HashSet<Integer>();
+  public static BitSet primes_bitset = new BitSet(100000000);
+
+  public static void main(String args[]) throws IOException {
+    getPrimes();
+  }
 
   public static void loadPrimes(String fileName) {
     try{
@@ -25,18 +26,20 @@ public class Utils {
       e.printStackTrace();
     }
   }
-}
 
-/*
-Code to generate primes
-    boolean nums[] = new boolean[775147];
-    for (int i = 2; i < 775147; ++i)  {
-      if (!nums[i]) {
-        //System.out.println(i);
-        for (int j = i+1; j < 775147; ++j) {
-          if (!nums[j]) {
+  public static void getPrimes() throws IOException {
+    int max = 100000000;
+    boolean nums[] = new boolean[max];
+    System.out.println(System.currentTimeMillis());
+    //setting 0 and 1 to be not prime
+    primes_bitset.set(0);
+    primes_bitset.set(1);
+    for (int i = 2; i < max; ++i)  {
+      if(!primes_bitset.get(i)){
+        for (int j = i*2; j < max; j = j+i) {
+          if (!primes_bitset.get(j)) {
             if (j % i == 0) {
-              nums[j] = true;
+              primes_bitset.flip(j);
             }
           }
         }
@@ -44,15 +47,16 @@ Code to generate primes
     }
     System.out.println(System.currentTimeMillis());
     System.out.println();
-    int cnt = 0;
-    for (int i = 1; i < nums.length; ++i)   {
-        if (!nums[i])    {
-          System.out.print(i + " ,");
-          cnt++;
-          if (cnt%15 == 0)    {
-            System.out.println("");
-          }
-        }
-    }
+//    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
+//        new FileOutputStream("C:\\\\Prateek\\\\Project_Euler\\\\Miscllaneous\\\\src\\\\prime_numbers_1"), "utf-8"));
+//    for (int i = 1; i < nums.length; ++i)   {
+//      if (!nums[i])    {
+//        //bw.write(Integer.toString(i) + "\n");
+//        primes.add(i);
+//      }
+//    }
 
- */
+        //"C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers_1");
+
+  }
+}
