@@ -85,10 +85,13 @@ public class Utils {
 
   // get digits in the number
   public static List<Integer> getDigits(int num)  {
+    int tensplace[] = new int[] {1,10,100,1000,10000,100000,1000000,10000000};
     List<Integer> li = new ArrayList<>();
+    int numLength = getLength(num);
     while (num > 0) {
-      li.add(num%10);
-      num /= 10;
+      numLength = getLength(num);
+      li.add(num/tensplace[numLength - 1]);
+      num %= tensplace[numLength - 1];
     }
     return li;
   }
