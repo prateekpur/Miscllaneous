@@ -17,6 +17,11 @@ public class Prob50 {
       sum += Utils.listPrimes.get(i);
       primeSum[i][0] = Utils.listPrimes.get(i);
       primeSum[i][1] = sum;
+      if (sum > maxSum) {
+        primeSum[i][1] = 0;
+        sum -= Utils.listPrimes.get(i);
+        break;
+      }
     }
     int maxLength = 0;
     long maxEnd = 0;
