@@ -10,7 +10,7 @@ public class Prob46 {
     System.out.println(System.currentTimeMillis());
     Set<Integer> squares = Utils.getSquares(1000);
     Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
-    Utils.getPrimes();
+    Utils.getPrimes(100000000);
     boolean found = false;
     for (int i = 35; !found; i = i+2)  {
       if (Utils.primes.contains(i)) {

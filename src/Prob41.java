@@ -7,7 +7,7 @@ import java.util.List;
 public class Prob41 {
   public static void main (String args[]) throws IOException {
     System.out.println(System.currentTimeMillis());
-    Utils.getPrimes();
+    Utils.getPrimes(100000000);
     for (int i : Utils.listPrimes)  {
       if (isPandigital(i))  {
         System.out.println(i);
