@@ -16,9 +16,10 @@ public class Prob35 {
   public static void main(String args[])  {
     int cnt = 0;
     Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
-    for (int i : Utils.primes)  {
-      List<Integer> li = getAllRotations(i);
-      int len = getLength(i);
+    for (long i : Utils.primes)  {
+      int i1 = (int)i;
+      List<Integer> li = getAllRotations(i1);
+      int len = getLength(i1);
       boolean equalLength = true;
       for (int j : li)  {
         if (getLength(j) != len)  {

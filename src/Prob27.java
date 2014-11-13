@@ -40,7 +40,7 @@ public class Prob27 implements Runnable {
 
   public static int findPrimes(int a, int b)  {
     int len = 0, maxLen = 0;
-    int prime = 0;
+    long prime = 0;
     for (int n = 1; ; ++n) {
       prime = (n*n) + a*n + b;
       if (prime < 0)  {

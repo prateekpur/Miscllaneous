@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class ComparePrimes {
   public static void main(String args[])  {
-    File file = new File("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\Primes_2_million");
+    File file = new File("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\Primes_6_million");
       try {
         FileReader fw = new FileReader(file.getAbsoluteFile());
         BufferedReader bw = new BufferedReader(fw);
@@ -25,17 +25,20 @@ public class ComparePrimes {
           str = bw.readLine();
         }
         bw.close();
-        file = new File("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers2");
+        file = new File("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers_1");
         long cnt = 0;
         fw = new FileReader(file.getAbsoluteFile());
-        bw = new BufferedReader(fw);str = bw.readLine();
-        String s[] = str.split(",");
-        for (String s1 : s) {
-          if (!primes_Golden.contains(Integer.parseInt(s1)))  {
-            System.out.println("Missing : "+s1);
+        bw = new BufferedReader(fw);
+        str = bw.readLine();
+        while(str!= null) {
+          String s[] = str.split(",");
+          for (String s1 : s) {
+            if (!primes_Golden.remove(Integer.parseInt(s1)))  {
+              System.out.println("Missing : "+s1);
+            }
+            cnt++;
           }
-          cnt += Integer.parseInt(s1);
-          primes_Golden.remove(Integer.parseInt(s1));
+          str = bw.readLine();
         }
         boolean empty = primes_Golden.isEmpty();
         if (!empty) {

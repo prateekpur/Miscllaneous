@@ -5,7 +5,7 @@ import java.util.*;
  * Created by Prateek on 9/22/2014.
  */
 public class Utils {
-  public static Set<Integer> primes = new HashSet<Integer>();
+  public static Set<Long> primes = new HashSet<Long>();
   public static BitSet primes_bitset = new BitSet(100000000);
   public static List<Integer> listPrimes = new ArrayList<>();
 
@@ -18,7 +18,7 @@ public class Utils {
       BufferedReader br = new BufferedReader(new FileReader(fileName));
       String line = br.readLine();
       while (line != null) {
-        primes.add(Integer.parseInt(line));
+        primes.add(Long.parseLong(line));
         line = br.readLine();
       }
     } catch (FileNotFoundException e) {
@@ -37,7 +37,7 @@ public class Utils {
   }
 
   public static void getPrimes(int max) {
-    boolean nums[] = new boolean[max];
+    //boolean nums[] = new boolean[max];
     //setting 0 and 1 to be not prime
     primes_bitset.set(0);
     primes_bitset.set(1);

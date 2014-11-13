@@ -7,8 +7,9 @@ import java.util.Map;
 public class Prob26 {
   public static void main(String args[])  {
     Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
-    int maxLength = 0, maxNum = 3;
-    for(int i : Utils.primes) {
+    int maxLength = 0;
+    long maxNum = 3;
+    for(long i : Utils.primes) {
       if (i > 1000) {
         System.out.println(maxLength);
         return;
@@ -16,8 +17,8 @@ public class Prob26 {
       if (i == 2) {
         continue;
       }
-      for (int j = i; j <1000; j = j+i) {
-        int tmp = getCycleLength(j);
+      for (long j = i; j <1000; j = j+i) {
+        int tmp = getCycleLength((int)j);
         if (tmp > maxLength)  {
           maxLength = tmp;
           maxNum = j;

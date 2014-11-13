@@ -12,7 +12,7 @@ public class Prob46 {
     Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
     Utils.getPrimes(100000000);
     boolean found = false;
-    for (int i = 35; !found; i = i+2)  {
+    for (long i = 35; !found; i = i+2)  {
       if (Utils.primes.contains(i)) {
         continue;
       }

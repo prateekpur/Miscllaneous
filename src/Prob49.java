@@ -7,13 +7,14 @@ public class Prob49 {
   public static void main(String args[])  {
     Map<String, List<Integer>> numberDigits = new HashMap<>();
     Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\4digit_prime_numbers");
-    for (int i : Utils.primes)  {
-      String s = getSortedDigits(i);
+    for (long i : Utils.primes)  {
+      int i1 = (int)i;
+      String s = getSortedDigits(i1);
       List<Integer> li = numberDigits.get(s);
       if (li == null) {
         li = new ArrayList<>();
       }
-      li.add(i);
+      li.add(i1);
       numberDigits.remove(s);
       numberDigits.put(s, li);
     }

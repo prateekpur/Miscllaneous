@@ -22,9 +22,9 @@ public class Prob12 {
 
   public static int getNumberOfFactors(int num)  {
     int factors = 1;
-    Iterator<Integer> iter = Utils.primes.iterator();
+    Iterator<Long> iter = Utils.primes.iterator();
     while(iter.hasNext()) {
-      int prime = iter.next();
+      long prime = iter.next();
       if (prime > num) {
         break;
       }
