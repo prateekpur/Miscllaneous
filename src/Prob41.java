@@ -14,6 +14,14 @@ public class Prob41 {
 //      }
 //    }
 //    System.out.println(System.currentTimeMillis());
+    System.out.println(System.currentTimeMillis());
+    Utils.getPrimes(100000000);
+    for (int i : Utils.listPrimes)  {
+      if (isPandigital(i))  {
+        System.out.println(i);
+      }
+    }
+    System.out.println(System.currentTimeMillis());
   }
 
   private static boolean isPandigital(int num)  {

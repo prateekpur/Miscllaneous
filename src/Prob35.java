@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,13 +14,33 @@ public class Prob35 {
   // multiplication factors for digits places
   final static int[] multiplyFactors = new int[]{1,10,100,1000,10000,100000};
   public static void main(String args[])  {
-    rotateNumber(1234);
+    int cnt = 0;
+    Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
+    for (long i : Utils.primes)  {
+      int i1 = (int)i;
+      List<Integer> li = getAllRotations(i1);
+      int len = getLength(i1);
+      boolean equalLength = true;
+      for (int j : li)  {
+        if (getLength(j) != len)  {
+          equalLength = false;
+        }
+      }
+      if(equalLength && Utils.primes.containsAll(li))  {
+        ++cnt;
+        System.out.println(i);
+      }
+    }
+    System.out.println(cnt);
   }
 
   private static List<Integer> getAllRotations(int num) {
     List<Integer> li = new ArrayList<>();
+    li.add(num);
+    int newnum = num;
     for (int i = 1; i < getLength(num); ++i)  {
-
+      newnum = rotateNumber(newnum);
+      li.add(newnum);
     }
     return li;
   }
@@ -42,9 +66,6 @@ public class Prob35 {
     int newnum = 0;
     while(num > 0)  {
       int digit = num%10;
-      if (digit == 0 || digit == 2 || digit == 4 || digit == 6 || digit == 8 || digit == 5) {
-        return 0;
-      }
       num = num/10;
       if (num == 0) {
         newnum += digit*multiplyFactors[0];

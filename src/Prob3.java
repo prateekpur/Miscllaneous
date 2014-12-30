@@ -8,7 +8,7 @@ public class Prob3 {
     Utils.loadPrimes("C:\\prateek\\work\\Miscllaneous\\src\\prime_numbers");
     System.out.println(System.currentTimeMillis());
     long num = 600851475143l;
-    for (int i : Utils.primes)  {
+    for (long i : Utils.primes)  {
       if (num%i == 0) {
         System.out.println(i);
       }

@@ -7,7 +7,7 @@ public class Prob37 {
   final static int[] powers = new int[]{1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000};
 
   public static void main(String args[]) throws IOException {
-    Utils.getPrimes();
+    Utils.getPrimes(100000000);
     long sum = 0l;
     boolean rotatePrime = true;
     for (int i = 10; i < 100000000; ++i)  {
