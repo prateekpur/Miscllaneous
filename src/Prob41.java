@@ -6,14 +6,14 @@ import java.util.List;
  */
 public class Prob41 {
   public static void main (String args[]) throws IOException {
-    System.out.println(System.currentTimeMillis());
-    Utils.getPrimes();
-    for (int i : Utils.listPrimes)  {
-      if (isPandigital(i))  {
-        System.out.println(i);
-      }
-    }
-    System.out.println(System.currentTimeMillis());
+//    System.out.println(System.currentTimeMillis());
+//    Utils.getPrimes();
+//    for (int i : Utils.listPrimes)  {
+//      if (isPandigital(i))  {
+//        System.out.println(i);
+//      }
+//    }
+//    System.out.println(System.currentTimeMillis());
   }
 
   private static boolean isPandigital(int num)  {
