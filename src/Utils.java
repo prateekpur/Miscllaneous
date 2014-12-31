@@ -112,26 +112,62 @@ public class Utils {
     int tensplace[] = new int[] {1,10,100,1000,10000,100000,1000000,10000000};
     List<Integer> li = new ArrayList<>();
     int numLength = getLength(num);
-    while (num > 0) {
+    while (numLength > 1) {
       numLength = getLength(num);
       li.add(num/tensplace[numLength - 1]);
       num %= tensplace[numLength - 1];
+      int newnumLength = getLength(num);
+      if (newnumLength + 1 < numLength) {
+        for (int i = 0; i < numLength - (newnumLength + 1); ++i)  {
+          li.add(0);
+        }
+      }
     }
     return li;
   }
 
-  // get digits in the number up to 10 digits
-  public static List<Long> getDigits(long num)  {
-    long tensplace[] = new long[] {1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000};
-    List<Long> li = new ArrayList<>();
-    int numLength = getLength(num);
-    while (num > 0) {
-      li.add(num/tensplace[numLength - 1]);
-      num %= tensplace[numLength - 1];
-      numLength--;
+  public static List<Integer> getDigits(long num) {
+    String s = "";
+    s = s + num;
+    List<Integer> li = new ArrayList<>();
+    char ch[] = s.toCharArray();
+    for (char c : ch) {
+      switch (c) {
+        case '0':
+          li.add(0);
+          break;
+        case '1':
+          li.add(1);
+          break;
+        case '2':
+          li.add(2);
+          break;
+        case '3':
+          li.add(3);
+          break;
+        case '4':
+          li.add(4);
+          break;
+        case '5':
+          li.add(5);
+          break;
+        case '6':
+          li.add(6);
+          break;
+        case '7':
+          li.add(7);
+          break;
+        case '8':
+          li.add(8);
+          break;
+        case '9':
+          li.add(9);
+          break;
+      }
     }
     return li;
   }
+
 
   public static boolean getNextPerm(int digits[]) {
     //check if number is already descending
