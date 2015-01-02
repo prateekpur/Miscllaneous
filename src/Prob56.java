@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,16 +9,29 @@ import java.util.Set;
  */
 public class Prob56 {
   public static void main(String args[])  {
-    System.out.println(System.currentTimeMillis());
-    Utils.loadPrimes("C:\\Prateek\\Project_Euler\\Miscllaneous\\src\\prime_numbers");
-    List<Integer> squares = new ArrayList<>();
-    for (int i = 1; i < 10000; ++i) {
-      squares.add(2*i*i);
-    }
-    for (int i = 9; i < Integer.MAX_VALUE; i = i + 2 )  {
-      if (Utils.primes.contains(i)) {
-        continue;
+    long start = System.currentTimeMillis();
+    int maxDigs = 0;
+    for (int i = 0; i < 100; ++i) {
+      System.out.println(" :::::: "+i);
+      BigInteger b = new BigInteger(Integer.toString(i));
+      for ( int j = 1; j < 100; ++j)  {
+        BigInteger b1 = b.pow(j);
+        int s1 = sum(b1.toString());
+        if (maxDigs < s1)  {
+          maxDigs = s1;
+        }
       }
     }
+    System.out.println(maxDigs);
+    System.out.println(System.currentTimeMillis() - start);
+  }
+
+  public static int sum(String s)  {
+    int sum = 0;
+    char ch[] = s.toCharArray();
+    for (char c : ch) {
+      sum = sum + Integer.parseInt(Character.toString(c));
+    }
+    return sum;
   }
 }
