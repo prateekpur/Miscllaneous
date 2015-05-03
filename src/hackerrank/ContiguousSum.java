@@ -15,9 +15,9 @@ public class ContiguousSum {
     String input = "";
     try{
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-      numtests = Integer.parseInt(br.readLine());
+      numtests = Integer.parseInt(br.readLine().trim());
       for (int i = 0; i < numtests; ++i)  {
-        len = Integer.parseInt(br.readLine());
+        len = Integer.parseInt(br.readLine().trim());
         input = br.readLine();
         max = getMax(input);
         System.out.println(max[0] + " " + max[1]);
@@ -33,7 +33,7 @@ public class ContiguousSum {
     String numbers[] = input.split(" ");
     int nums[] = new int[numbers.length];
     for (int i = 0; i < numbers.length; ++i)  {
-      nums[i] = Integer.parseInt(numbers[i]);
+      nums[i] = Integer.parseInt(numbers[i].trim());
     }
     int low = lowestIfAllNegative(nums);
     if(low != 0)  {
