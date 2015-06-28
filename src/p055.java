@@ -1,5 +1,32 @@
-/**
- * Created by Prateek on 1/2/2015.
- */
-public class p055 {
+import java.math.BigInteger;
+
+
+public final class p055 {
+
+  public static void main(String[] args) {
+    System.out.println(new p055().run());
+  }
+
+
+  public String run() {
+    int count = 0;
+    for (int i = 0; i < 10000; i++) {
+      if (isLychrel(i))
+        System.out.println(i);
+        count++;
+    }
+    return Integer.toString(count);
+  }
+
+
+  private static boolean isLychrel(int n) {
+    BigInteger temp = BigInteger.valueOf(n);
+    for (int i = 0; i < 49; i++) {
+      temp = temp.add(new BigInteger(Library.reverse(temp.toString())));
+      if (Library.isPalindrome(temp.toString()))
+        return false;
+    }
+    return true;
+  }
+
 }
