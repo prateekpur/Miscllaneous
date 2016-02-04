@@ -22,17 +22,10 @@ public class Prob47 {
       if (s.size() >= 4)  {
         numbers.add(i);
         if (numbers.contains(i-1) && numbers.contains(i-2) && numbers.contains(i-3))  {
-          System.out.println("Number Found : "+i);
+          System.out.println("Number Found : "+(i-3));
+          System.out.println("Time : "+ (System.currentTimeMillis() - time));
           System.exit(0);
         }
-        System.out.println(i);
-        System.out.println("Factors");
-        StringBuffer s1 = new StringBuffer("");
-        for (int j : s) {
-          s1.append(j);
-          s1.append(",");
-        }
-        System.out.println(s1.toString());
       }
     }
   }
