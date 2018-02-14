@@ -9,10 +9,6 @@ public class Utils {
   public static BitSet primes_bitset = new BitSet(100000000);
   public static List<Integer> listPrimes = new ArrayList<>();
 
-  public static void main(String args[]) throws IOException {
-    getPrimes(100000000);
-  }
-
   public static void loadPrimes(String fileName) {
     try{
       BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -37,14 +33,12 @@ public class Utils {
   }
 
   public static BitSet getPrimesBitset(int max) {
-    //boolean nums[] = new boolean[max];
-    //setting 0 and 1 to be not prime
-    System.out.println(max);
+    long start = System.currentTimeMillis();
     BitSet bitset = new BitSet();
     bitset.set(0);
     bitset.set(1);
     for (int i = 2; i < max; ++i)  {
-      if(!bitset.get(i)){
+      if(!bitset.get(i)) {
         // Adding max/i condition to cover case where i*2 > Integer.MAX, this case integer out of bounds
         if (max / i > 2)  {
           for (int j = i*2; (max - j) > i; j = j+i) {
@@ -57,6 +51,7 @@ public class Utils {
         }
       }
     }
+    System.out.println(System.currentTimeMillis() - start);
     return bitset;
   }
 
